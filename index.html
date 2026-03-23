@@ -645,6 +645,130 @@
 
 
     /* ─────────────────────────────────────────────
+       CONTAINER SCROLL ANIMATION
+       Mirrors framer-motion ContainerScroll exactly:
+       rotateX 20→0, scale 1.05→1, title translateY 0→-100px
+    ───────────────────────────────────────────── */
+    .cs-section {
+      height: 80rem;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem;
+      background: var(--night);
+    }
+    .cs-inner {
+      width: 100%; max-width: 1100px; margin: 0 auto;
+      padding: 10rem 0;
+      perspective: 1000px;
+      position: relative;
+    }
+    .cs-title {
+      max-width: 900px; margin: 0 auto 0;
+      text-align: center;
+      will-change: transform;
+    }
+    .cs-title .label { justify-content: center; }
+    .cs-title h2 {
+      font-family: var(--disp);
+      font-size: clamp(28px, 3.6vw, 52px);
+      font-weight: 400; line-height: 1.08; letter-spacing: -0.01em;
+      color: #F5FAFF; text-wrap: balance;
+    }
+    .cs-title h2 em {
+      font-style: normal;
+      background: linear-gradient(130deg, var(--neon) 0%, var(--electric) 55%, #96BAFF 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .cs-title p {
+      font-size: clamp(14px, 1.4vw, 16px);
+      color: rgba(207,233,247,0.55); margin-top: 16px; line-height: 1.8;
+    }
+
+    /* The card */
+    .cs-card {
+      max-width: 1000px; margin: -48px auto 0;
+      border-radius: 24px;
+      border: 4px solid rgba(94,201,255,0.18);
+      background: #0d1b3e;
+      overflow: hidden;
+      transform-origin: top center;
+      will-change: transform;
+      transform: rotateX(20deg) scale(1.05);
+      box-shadow:
+        0 0 0 1px rgba(94,201,255,0.06),
+        0 9px 20px rgba(0,0,0,0.5),
+        0 37px 37px rgba(0,0,0,0.42),
+        0 84px 50px rgba(0,0,0,0.26),
+        0 149px 60px rgba(0,0,0,0.1);
+    }
+    /* card topbar */
+    .cs-topbar {
+      display: flex; align-items: center; gap: 8px;
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(94,201,255,0.1);
+      background: rgba(5,15,42,0.65);
+    }
+    .cs-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .cs-bar-title {
+      font-family: var(--body); font-size: 11px; font-weight: 600;
+      color: rgba(207,233,247,0.45); margin-left: 8px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    /* card body content */
+    .cs-body { display: grid; grid-template-columns: 200px 1fr; min-height: 400px; }
+    .cs-sidebar {
+      padding: 20px 14px;
+      border-right: 1px solid rgba(94,201,255,0.07);
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .cs-nav {
+      padding: 8px 12px; border-radius: 8px;
+      font-size: 12px; font-weight: 500; color: rgba(207,233,247,0.4);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .cs-nav.active { background: rgba(31,107,255,0.18); color: var(--neon); }
+    .cs-nav-icon { width: 13px; height: 13px; border-radius: 3px; background: currentColor; opacity: 0.7; flex-shrink: 0; }
+    .cs-content { padding: 22px; display: flex; flex-direction: column; gap: 16px; }
+    .cs-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+    .cs-stat {
+      padding: 12px 14px; border-radius: 10px;
+      background: rgba(10,44,140,0.22); border: 1px solid rgba(94,201,255,0.1);
+    }
+    .cs-stat-val { font-family: var(--disp); font-size: 22px; color: var(--neon); }
+    .cs-stat-lbl { font-size: 10px; color: rgba(207,233,247,0.4); margin-top: 2px; }
+    .cs-lbl {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(94,201,255,0.5); margin-bottom: 6px;
+    }
+    .cs-flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .cs-node {
+      padding: 7px 13px; border-radius: 9px;
+      font-size: 11px; font-weight: 600; color: rgba(245,250,255,0.85);
+      border: 1px solid rgba(94,201,255,0.18); background: rgba(10,44,140,0.35);
+    }
+    .cs-node.accent { background: rgba(31,107,255,0.28); border-color: rgba(94,201,255,0.38); color: var(--neon); }
+    .cs-arrow { color: rgba(94,201,255,0.3); font-size: 13px; }
+    .cs-tasks { display: flex; flex-direction: column; gap: 8px; }
+    .cs-task {
+      display: flex; align-items: center; gap: 10px; padding: 9px 13px;
+      border-radius: 9px; background: rgba(5,15,42,0.5);
+      border: 1px solid rgba(94,201,255,0.07);
+    }
+    .cs-task-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .cs-task-text { font-size: 12px; color: rgba(207,233,247,0.65); flex: 1; }
+    .cs-badge {
+      font-size: 10px; font-weight: 700; padding: 2px 8px;
+      border-radius: 100px; letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 768px) {
+      .cs-section { height: 60rem; }
+      .cs-inner { padding: 5rem 0; }
+      .cs-body { grid-template-columns: 1fr; }
+      .cs-sidebar { display: none; }
+      .cs-stats { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ─────────────────────────────────────────────
        REDUCED MOTION
     ───────────────────────────────────────────── */
     @media (prefers-reduced-motion:reduce) {
@@ -713,6 +837,86 @@
   </div>
 
 </section>
+
+<!-- ── CONTAINER SCROLL SHOWCASE ──────────────────── -->
+<section class="cs-section" aria-label="Vista de la plataforma Structura">
+  <div class="cs-inner">
+    <!-- title: translates up as card flattens -->
+    <div class="cs-title" id="cs-title">
+      <span class="label">La plataforma</span>
+      <h2>Tus automatizaciones,<br><em>siempre bajo control</em></h2>
+      <p>Un panel centralizado donde ves cada flujo activo, cada tarea ejecutada y cada hora recuperada.</p>
+    </div>
+    <!-- card: starts tilted 20° and flattens to flat on scroll -->
+    <div class="cs-card" id="cs-card">
+      <div class="cs-topbar">
+        <div class="cs-dot" style="background:#ff5f57"></div>
+        <div class="cs-dot" style="background:#febc2e"></div>
+        <div class="cs-dot" style="background:#28c840"></div>
+        <span class="cs-bar-title">Structura · Panel de automatizaciones</span>
+      </div>
+      <div class="cs-body">
+        <div class="cs-sidebar">
+          <div class="cs-nav active"><div class="cs-nav-icon"></div>Flujos activos</div>
+          <div class="cs-nav"><div class="cs-nav-icon"></div>Correos</div>
+          <div class="cs-nav"><div class="cs-nav-icon"></div>Reportes</div>
+          <div class="cs-nav"><div class="cs-nav-icon"></div>Seguimientos</div>
+          <div class="cs-nav"><div class="cs-nav-icon"></div>Configuración</div>
+        </div>
+        <div class="cs-content">
+          <div class="cs-stats">
+            <div class="cs-stat">
+              <div class="cs-stat-val">12.4h</div>
+              <div class="cs-stat-lbl">Ahorradas esta semana</div>
+            </div>
+            <div class="cs-stat">
+              <div class="cs-stat-val">247</div>
+              <div class="cs-stat-lbl">Tareas automatizadas</div>
+            </div>
+            <div class="cs-stat">
+              <div class="cs-stat-val">98%</div>
+              <div class="cs-stat-lbl">Tasa de éxito</div>
+            </div>
+          </div>
+          <div>
+            <div class="cs-lbl">Flujo activo — Informe semanal</div>
+            <div class="cs-flow">
+              <div class="cs-node">Datos CRM</div>
+              <div class="cs-arrow">→</div>
+              <div class="cs-node accent">IA analiza</div>
+              <div class="cs-arrow">→</div>
+              <div class="cs-node">Genera PDF</div>
+              <div class="cs-arrow">→</div>
+              <div class="cs-node">Envía correo</div>
+            </div>
+          </div>
+          <div>
+            <div class="cs-lbl">Últimas ejecuciones</div>
+            <div class="cs-tasks">
+              <div class="cs-task">
+                <div class="cs-task-dot" style="background:#28c840"></div>
+                <span class="cs-task-text">Informe mensual enviado a 3 destinatarios</span>
+                <span class="cs-badge" style="background:rgba(40,200,64,0.15);color:#28c840">Completado</span>
+              </div>
+              <div class="cs-task">
+                <div class="cs-task-dot" style="background:#5EC9FF"></div>
+                <span class="cs-task-text">Seguimiento automático — 5 clientes</span>
+                <span class="cs-badge" style="background:rgba(94,201,255,0.15);color:#5EC9FF">En proceso</span>
+              </div>
+              <div class="cs-task">
+                <div class="cs-task-dot" style="background:rgba(207,233,247,0.25)"></div>
+                <span class="cs-task-text">Actualización de hoja de cálculo</span>
+                <span class="cs-badge" style="background:rgba(207,233,247,0.08);color:rgba(207,233,247,0.35)">Pendiente</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
 
 <!-- ── BENEFITS ─────────────────────────────────────── -->
 <section class="section" aria-labelledby="benefits-heading">
@@ -973,6 +1177,45 @@
       if (elapsed < DURATION) requestAnimationFrame(draw);
     }
     requestAnimationFrame(draw);
+  })();
+
+  /* ── CONTAINER SCROLL ANIMATION ──
+     Ports framer-motion ContainerScroll exactly:
+     scrollYProgress: 0 when section-top enters viewport-bottom
+                      1 when section-bottom exits viewport-top
+     rotate:    useTransform(progress, [0,1], [20, 0])
+     scale:     useTransform(progress, [0,1], [1.05, 1])  desktop
+                useTransform(progress, [0,1], [0.7, 0.9]) mobile
+     translate: useTransform(progress, [0,1], [0, -100])  → title translateY
+  ── */
+  (function initContainerScroll() {
+    const section = document.querySelector('.cs-section');
+    const card    = document.getElementById('cs-card');
+    const title   = document.getElementById('cs-title');
+    if (!section || !card || prefersReduced) return;
+
+    function update() {
+      const rect   = section.getBoundingClientRect();
+      const vh     = window.innerHeight;
+      const h      = rect.height;
+      // progress 0→1: section enters bottom of viewport → section exits top
+      const progress = Math.max(0, Math.min(1, (vh - rect.top) / (vh + h)));
+
+      const mobile     = window.innerWidth <= 768;
+      const scaleStart = mobile ? 0.7  : 1.05;
+      const scaleEnd   = mobile ? 0.9  : 1.0;
+
+      const rotateX   = 20 * (1 - progress);
+      const scale     = scaleStart + (scaleEnd - scaleStart) * progress;
+      const translateY = -100 * progress;
+
+      card.style.transform  = `rotateX(${rotateX}deg) scale(${scale})`;
+      if (title) title.style.transform = `translateY(${translateY}px)`;
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
   })();
 
   /* ── WORD CYCLING ── */
