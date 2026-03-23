@@ -853,10 +853,12 @@
 
 <!-- ── HERO ─────────────────────────────────────────── -->
 <main id="main">
-<section class="cs-section cs-hero" aria-label="Structura — inicio">
+<section class="hero">
   <canvas id="hero-canvas" aria-hidden="true"></canvas>
-  <div class="cs-inner">
-    <div class="cs-title" data-cs-title>
+
+  <div class="hero-inner">
+
+    <div class="hero-text">
       <div class="hero-logo-badge" aria-label="Structura">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none" width="48" height="48" aria-hidden="true">
           <path fill-rule="evenodd"
@@ -865,30 +867,22 @@
         </svg>
         <span class="hero-logo-name">Structura</span>
       </div>
-    </div>
-    <div class="cs-card" data-cs-card>
-      <div class="cs-topbar">
-        <div class="cs-dot" style="background:#ff5f57"></div>
-        <div class="cs-dot" style="background:#febc2e"></div>
-        <div class="cs-dot" style="background:#28c840"></div>
-        <span class="cs-bar-title">Structura · Tu tiempo donde más importa</span>
-      </div>
-      <div class="cs-panel-body cs-panel-hero">
-        <h1>
-          <span class="h1-row">
-            <span class="h1-word-wrap"><em id="cycling-prefix">Tu</em></span>
-            <span class="h1-word-wrap"><em id="cycling-word">tiempo</em></span>
-          </span>
-          <span class="h1-static">donde realmente importa</span>
-        </h1>
-        <p class="hero-sub">Para empresas y profesionales independientes. Automatizamos tus tareas repetitivas con herramientas de IA hechas exactamente para ti.</p>
-        <div class="hero-actions">
-          <a href="" class="btn btn-electric" onclick="Calendly.initPopupWidget({url:'https://calendly.com/ismaeldavidlora/30-minutos-valoracion-gratuita?hide_gdpr_banner=1&lang=es'});return false;">Agenda tu valoración gratuita</a>
-          <a href="#proceso" class="btn btn-ghost">¿Cómo funciona?</a>
-        </div>
+      <h1>
+        <span class="h1-row">
+          <span class="h1-word-wrap"><em id="cycling-prefix">Tu</em></span>
+          <span class="h1-word-wrap"><em id="cycling-word">tiempo</em></span>
+        </span>
+        <span class="h1-static">donde realmente importa</span>
+      </h1>
+      <p class="hero-sub">Para empresas y profesionales independientes. Automatizamos tus tareas repetitivas con herramientas de IA hechas exactamente para ti.</p>
+      <div class="hero-actions">
+        <a href="" class="btn btn-electric" onclick="Calendly.initPopupWidget({url:'https://calendly.com/ismaeldavidlora/30-minutos-valoracion-gratuita?hide_gdpr_banner=1&lang=es'});return false;">Agenda tu valoración gratuita</a>
+        <a href="#proceso" class="btn btn-ghost">¿Cómo funciona?</a>
       </div>
     </div>
+
   </div>
+
 </section>
 
 <!-- ── CONTAINER SCROLL SHOWCASE ──────────────────── -->
@@ -1185,7 +1179,7 @@
     const uRes  = gl.getUniformLocation(prog, 'resolution');
 
     function resize() {
-      const hero = document.querySelector('.cs-hero');
+      const hero = document.querySelector('.hero');
       const w = hero.offsetWidth, h = hero.offsetHeight;
       canvas.width = w * Math.min(window.devicePixelRatio, 2);
       canvas.height = h * Math.min(window.devicePixelRatio, 2);
@@ -1301,6 +1295,21 @@
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
   }
 
+  /* ── 4. HERO TEXT PARALLAX ── */
+  const heroText = document.querySelector('.hero-text');
+  if (heroText && !prefersReduced) {
+    let ticking2 = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking2) {
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+          heroText.style.transform = `translateY(${y * 0.03}px)`;
+          ticking2 = false;
+        });
+        ticking2 = true;
+      }
+    }, { passive:true });
+  }
 
 })();
 </script>
