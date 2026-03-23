@@ -672,9 +672,30 @@
       color: rgba(207,233,247,0.55); margin-top: 16px; line-height: 1.8;
     }
 
+    /* Card header — title/subtitle lives inside the card now */
+    .cs-card-header {
+      padding: 28px 36px 24px;
+      border-bottom: 1px solid rgba(94,201,255,0.08);
+    }
+    .cs-card-header .label { justify-content: flex-start; }
+    .cs-card-header h2 {
+      font-family: var(--disp);
+      font-size: clamp(20px, 2.2vw, 30px);
+      font-weight: 400; line-height: 1.1; letter-spacing: -0.01em;
+      color: #F5FAFF; margin: 10px 0 8px; text-wrap: balance;
+    }
+    .cs-card-header h2 em {
+      font-style: normal;
+      background: linear-gradient(130deg, var(--neon) 0%, var(--electric) 55%, #96BAFF 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .cs-card-header p {
+      font-size: 13px; color: rgba(207,233,247,0.5); line-height: 1.7; margin: 0;
+    }
+
     /* The card */
     .cs-card {
-      max-width: 1000px; margin: -48px auto 0;
+      max-width: 1000px; margin: 0 auto;
       border-radius: 24px;
       border: 4px solid rgba(94,201,255,0.18);
       background: #0d1b3e;
@@ -890,17 +911,17 @@
 <!-- ── BENEFITS ─────────────────────────────────────── -->
 <section class="cs-section" aria-labelledby="benefits-heading">
   <div class="cs-inner">
-    <div class="cs-title" data-cs-title>
-      <span class="label">Para ti y tu negocio</span>
-      <h2>Automatización para empresas<br><em>y profesionales independientes</em></h2>
-      <p>No necesitas saber de tecnología. Nosotros entendemos tu trabajo, construimos las herramientas y te enseñamos a usarlas.</p>
-    </div>
     <div class="cs-card" data-cs-card>
       <div class="cs-topbar">
         <div class="cs-dot" style="background:#ff5f57"></div>
         <div class="cs-dot" style="background:#febc2e"></div>
         <div class="cs-dot" style="background:#28c840"></div>
         <span class="cs-bar-title">Structura · Para ti y tu negocio</span>
+      </div>
+      <div class="cs-card-header">
+        <span class="label">Para ti y tu negocio</span>
+        <h2 id="benefits-heading">Automatización para empresas<br><em>y profesionales independientes</em></h2>
+        <p>No necesitas saber de tecnología. Nosotros entendemos tu trabajo, construimos las herramientas y te enseñamos a usarlas.</p>
       </div>
       <div class="cs-panel-body">
         <div class="benefits-grid" role="list">
@@ -913,10 +934,6 @@
             </div>
             <h3>Recupera tu tiempo</h3>
             <p>Elimina las tareas que consumen tu día — informes, correos, seguimientos, registros. En tu empresa o en tu trabajo independiente.</p>
-            <div class="panel-stat-row">
-              <span class="panel-stat-num">12h</span>
-              <span class="panel-stat-lbl">promedio recuperadas<br>cada semana</span>
-            </div>
           </div>
 
           <div class="benefit-card" role="listitem">
@@ -957,17 +974,17 @@
 <!-- ── PROCESS ───────────────────────────────────────── -->
 <section class="cs-section" id="proceso" aria-labelledby="process-heading">
   <div class="cs-inner">
-    <div class="cs-title" data-cs-title>
-      <span class="label">El proceso</span>
-      <h2>Tres pasos.<br><em>Sin complicaciones.</em></h2>
-      <p>Desde la primera conversación hasta que las herramientas trabajan para ti.</p>
-    </div>
     <div class="cs-card" data-cs-card>
       <div class="cs-topbar">
         <div class="cs-dot" style="background:#ff5f57"></div>
         <div class="cs-dot" style="background:#febc2e"></div>
         <div class="cs-dot" style="background:#28c840"></div>
         <span class="cs-bar-title">Structura · Cómo funciona</span>
+      </div>
+      <div class="cs-card-header">
+        <span class="label">El proceso</span>
+        <h2 id="process-heading">Tres pasos.<br><em>Sin complicaciones.</em></h2>
+        <p>Desde la primera conversación hasta que las herramientas trabajan para ti.</p>
       </div>
       <div class="cs-panel-body">
         <div class="steps visible">
@@ -1002,17 +1019,17 @@
 <!-- ── DASHBOARD ──────────────────────────────────────── -->
 <section class="cs-section" aria-label="Vista de la plataforma Structura">
   <div class="cs-inner">
-    <div class="cs-title" id="cs-title" data-cs-title>
-      <span class="label">La plataforma</span>
-      <h2>Tus automatizaciones,<br><em>siempre bajo control</em></h2>
-      <p>Un panel centralizado donde ves cada flujo activo, cada tarea ejecutada y cada hora recuperada.</p>
-    </div>
     <div class="cs-card" id="cs-card" data-cs-card>
       <div class="cs-topbar">
         <div class="cs-dot" style="background:#ff5f57"></div>
         <div class="cs-dot" style="background:#febc2e"></div>
         <div class="cs-dot" style="background:#28c840"></div>
         <span class="cs-bar-title">Structura · Panel de automatizaciones</span>
+      </div>
+      <div class="cs-card-header">
+        <span class="label">La plataforma</span>
+        <h2>Tus automatizaciones,<br><em>siempre bajo control</em></h2>
+        <p>Un panel centralizado donde ves cada flujo activo, cada tarea ejecutada y cada hora recuperada.</p>
       </div>
       <div class="cs-body">
         <div class="cs-sidebar">
@@ -1078,9 +1095,6 @@
 <!-- ── CTA ────────────────────────────────────────── -->
 <section class="cs-section" id="contacto" aria-labelledby="cta-heading">
   <div class="cs-inner">
-    <div class="cs-title" data-cs-title>
-      <div class="cta-kicker">Empecemos</div>
-    </div>
     <div class="cs-card" data-cs-card>
       <div class="cs-topbar">
         <div class="cs-dot" style="background:#ff5f57"></div>
