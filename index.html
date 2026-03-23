@@ -199,24 +199,6 @@
       animation:fadeUp .55s .32s var(--ease-out) both;
     }
 
-    /* scroll hint */
-    .hero-scroll {
-      position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
-      display:flex; flex-direction:column; align-items:center; gap:6px;
-      animation:fadeIn .6s .7s var(--ease-out) both;
-    }
-    .hero-scroll span { font-size:10px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--txt-3); }
-    .scroll-line {
-      width:1.5px; height:32px;
-      background:linear-gradient(to bottom, var(--electric), transparent);
-      animation:scrollDrop 1.6s ease-in-out infinite;
-    }
-    @keyframes scrollDrop {
-      0%   { transform:scaleY(0); transform-origin:top; opacity:0; }
-      40%  { transform:scaleY(1); transform-origin:top; opacity:1; }
-      60%  { transform:scaleY(1); transform-origin:bottom; opacity:1; }
-      100% { transform:scaleY(0); transform-origin:bottom; opacity:0; }
-    }
 
     /* hero visual */
     .hero-visual {
@@ -593,7 +575,7 @@
     }
     .hero-logo-name {
       font-family: var(--disp);
-      font-size: 22px;
+      font-size: 26px;
       color: rgba(255,255,255,0.9);
       letter-spacing: -0.01em;
     }
@@ -606,8 +588,6 @@
     .stat-val     { color:#F5FAFF !important; }
     .hero .btn-ghost { background:rgba(255,255,255,0.06) !important; color:rgba(207,233,247,.9) !important; border-color:rgba(207,233,247,.25) !important; }
     .hero .btn-ghost:hover { background:rgba(255,255,255,0.1) !important; color:#F5FAFF !important; border-color:rgba(207,233,247,.45) !important; }
-    .hero-scroll span { color:rgba(207,233,247,0.35) !important; }
-    .scroll-line  { background:linear-gradient(to bottom, rgba(94,201,255,0.6), transparent) !important; }
 
     /* ─────────────────────────────────────────────
        WORD CYCLING
@@ -624,7 +604,9 @@
       font-style: normal;
       font-weight: 300;
       line-height: 1.35;
-      color: #F5FAFF;
+      color: #F5FAFF !important;
+      background: none !important;
+      -webkit-text-fill-color: #F5FAFF !important;
       white-space: nowrap;
     }
     #cycling-word {
@@ -646,6 +628,104 @@
     }
     .word-entering { animation:wordEnter 0.48s cubic-bezier(0.22,0.61,0.36,1) forwards; }
     .word-exiting  { animation:wordExit  0.28s ease-in forwards; }
+
+    /* ─────────────────────────────────────────────
+       CONTAINER SCROLL ANIMATION
+    ───────────────────────────────────────────── */
+    .product-showcase {
+      padding: 0 48px 80px;
+      background: var(--night);
+    }
+    .scroll-card-scene {
+      max-width: 1100px;
+      margin: 0 auto;
+      perspective: 1200px;
+    }
+    .scroll-card {
+      width: 100%;
+      border-radius: 20px;
+      border: 1px solid rgba(94,201,255,0.15);
+      background: #0d1b3e;
+      overflow: hidden;
+      transform-origin: top center;
+      will-change: transform;
+      transform: rotateX(18deg) scale(1.04);
+      box-shadow:
+        0 0 0 1px rgba(94,201,255,0.08),
+        0 9px 20px rgba(0,0,0,0.5),
+        0 37px 50px rgba(0,0,0,0.38),
+        0 84px 60px rgba(0,0,0,0.2);
+      transition: box-shadow 400ms ease;
+    }
+    /* card inner mockup */
+    .mock-topbar {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(94,201,255,0.1);
+      background: rgba(5,15,42,0.6);
+    }
+    .mock-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .mock-title {
+      font-family: var(--body); font-size: 12px; font-weight: 600;
+      color: rgba(207,233,247,0.5); margin-left: 8px; letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .mock-body { display: grid; grid-template-columns: 220px 1fr; min-height: 360px; }
+    .mock-sidebar {
+      padding: 20px 16px;
+      border-right: 1px solid rgba(94,201,255,0.08);
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .mock-nav-item {
+      padding: 8px 12px; border-radius: 8px;
+      font-size: 12px; font-weight: 500; color: rgba(207,233,247,0.45);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .mock-nav-item.active {
+      background: rgba(31,107,255,0.18);
+      color: var(--neon);
+    }
+    .mock-nav-icon { width: 14px; height: 14px; border-radius: 3px; background: currentColor; opacity: 0.7; }
+    .mock-content { padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+    .mock-section-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(94,201,255,0.5); margin-bottom: 4px;
+    }
+    .mock-flow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .mock-node {
+      padding: 8px 14px; border-radius: 10px;
+      font-size: 11px; font-weight: 600; color: rgba(245,250,255,0.85);
+      border: 1px solid rgba(94,201,255,0.2);
+      background: rgba(10,44,140,0.35);
+    }
+    .mock-node.accent { background: rgba(31,107,255,0.28); border-color: rgba(94,201,255,0.4); color: var(--neon); }
+    .mock-arrow { color: rgba(94,201,255,0.35); font-size: 14px; }
+    .mock-tasks { display: flex; flex-direction: column; gap: 8px; }
+    .mock-task {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 14px; border-radius: 10px;
+      background: rgba(5,15,42,0.5); border: 1px solid rgba(94,201,255,0.08);
+    }
+    .mock-task-dot {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    }
+    .mock-task-text { font-size: 12px; color: rgba(207,233,247,0.7); flex: 1; }
+    .mock-task-badge {
+      font-size: 10px; font-weight: 700; padding: 2px 8px;
+      border-radius: 100px; letter-spacing: 0.05em;
+    }
+    .mock-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+    .mock-stat-card {
+      padding: 12px 14px; border-radius: 10px;
+      background: rgba(10,44,140,0.2); border: 1px solid rgba(94,201,255,0.1);
+    }
+    .mock-stat-val { font-family: var(--disp); font-size: 22px; color: var(--neon); }
+    .mock-stat-lbl { font-size: 10px; color: rgba(207,233,247,0.45); margin-top: 2px; }
+    @media (max-width: 640px) {
+      .product-showcase { padding: 0 20px 60px; }
+      .mock-body { grid-template-columns: 1fr; }
+      .mock-sidebar { display: none; }
+    }
 
     /* ─────────────────────────────────────────────
        REDUCED MOTION
@@ -677,7 +757,6 @@
       .section { padding-top:72px; padding-bottom:72px; }
       .cta-band { padding-top:80px; padding-bottom:80px; }
       .benefit-card { padding:28px 24px; }
-      .hero-scroll { display:none; }
     }
   </style>
 </head>
@@ -695,7 +774,7 @@
 
     <div class="hero-text">
       <div class="hero-logo-badge" aria-label="Structura">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none" width="56" height="56" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none" width="48" height="48" aria-hidden="true">
           <path fill-rule="evenodd"
             d="m248.7 207.9-100-175.5c-5.28-9.25-13.09-12.81-20.74-12.81h-.05c-10.17 0-17.98 6.14-21.23 13.57l-99.27 174.6c-7.08 12.42 2.67 27.62 18.07 27.27 3.57-.09 6.59-1.09 9.82-2.65l80.98-36.3c8.92-4.04 18.74-2.33 24.62.73l82.9 36.57c13.37 6.37 31.38-5.45 26.18-22.49-.3-1.03-.72-2.03-1.27-2.98z M181.8 146.6c-2.79 0-4.8.4-7.08 1.24l-32.09-48.75c3.54-4 4.7-8.18 4.4-12.45-.77-10.04-8.68-18.58-18.92-18.58h-.14c-11.11 0-18.34 9.29-18.34 19.13 0 5 1.52 8.2 3.9 11.1l-40.81 61.33c-1.12-.15-2.28-.25-3.45-.25-10.77 0-18.48 8.64-18.48 18.77 0 10.35 8.22 18.33 18.19 18.33h.29c9.78 0 17.63-7.18 19.21-15.87l74.14-12.94c1.17 9.54 9.48 16.11 18.4 16.11h.24c10.87 0 18.79-9.08 17.37-19.96-1.12-8.54-7.87-17.21-16.83-17.21zm-53.74-68.7c6.27 0 8.09 5.62 8.09 9.14 0 5.51-4.79 7.92-7.89 7.92-5.23 0-8.52-4.15-8.52-7.82 0-4.37 2.91-9.24 8.32-9.24zm-59.03 108.6c-6.03-.35-8.31-4.92-8.31-8.04 0-5.16 4.23-8.32 8.21-8.32h.24c5.68 0 8.2 4.87 8.2 8.22 0 5.53-4.14 8.34-8.34 8.14zm95.2-29.75-77.58 13.39c-1.02-2.31-2.13-3.87-3.95-5.27l38.47-60.78c2.48.8 4.15 1 6.62 1 2.33 0 3.75-.4 5.88-1l33.06 49.25c-1.07 1.3-1.65 1.9-2.5 3.41zm16.98 16.8c-6.02 0-9.16-4.67-9.16-7.58 0-5.12 3.8-9.37 9.21-9.37 6.07 0 8.14 5.36 8.14 8.87 0 4.92-4.14 8.08-8.19 8.08z"
             fill="rgba(255,255,255,0.88)"/>
@@ -719,9 +798,90 @@
 
   </div>
 
-  <div class="hero-scroll" aria-hidden="true">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
+</section>
+
+<!-- ── PRODUCT SHOWCASE (ContainerScroll) ─────────────────────── -->
+<section class="product-showcase" aria-label="Vista de la plataforma">
+  <div class="scroll-card-scene">
+    <div class="scroll-card" id="scroll-card">
+      <!-- topbar -->
+      <div class="mock-topbar">
+        <div class="mock-dot" style="background:#ff5f57"></div>
+        <div class="mock-dot" style="background:#febc2e"></div>
+        <div class="mock-dot" style="background:#28c840"></div>
+        <span class="mock-title">Structura · Panel de automatizaciones</span>
+      </div>
+      <!-- body -->
+      <div class="mock-body">
+        <!-- sidebar -->
+        <div class="mock-sidebar">
+          <div class="mock-nav-item active">
+            <div class="mock-nav-icon"></div>Flujos activos
+          </div>
+          <div class="mock-nav-item">
+            <div class="mock-nav-icon"></div>Correos
+          </div>
+          <div class="mock-nav-item">
+            <div class="mock-nav-icon"></div>Reportes
+          </div>
+          <div class="mock-nav-item">
+            <div class="mock-nav-icon"></div>Seguimientos
+          </div>
+          <div class="mock-nav-item">
+            <div class="mock-nav-icon"></div>Configuración
+          </div>
+        </div>
+        <!-- main content -->
+        <div class="mock-content">
+          <div class="mock-stats">
+            <div class="mock-stat-card">
+              <div class="mock-stat-val">12.4h</div>
+              <div class="mock-stat-lbl">Ahorradas esta semana</div>
+            </div>
+            <div class="mock-stat-card">
+              <div class="mock-stat-val">247</div>
+              <div class="mock-stat-lbl">Tareas automatizadas</div>
+            </div>
+            <div class="mock-stat-card">
+              <div class="mock-stat-val">98%</div>
+              <div class="mock-stat-lbl">Tasa de éxito</div>
+            </div>
+          </div>
+          <div>
+            <div class="mock-section-label">Flujo activo — Informe semanal</div>
+            <div class="mock-flow">
+              <div class="mock-node">Datos CRM</div>
+              <div class="mock-arrow">→</div>
+              <div class="mock-node accent">IA analiza</div>
+              <div class="mock-arrow">→</div>
+              <div class="mock-node">Genera PDF</div>
+              <div class="mock-arrow">→</div>
+              <div class="mock-node">Envía correo</div>
+            </div>
+          </div>
+          <div>
+            <div class="mock-section-label">Últimas ejecuciones</div>
+            <div class="mock-tasks">
+              <div class="mock-task">
+                <div class="mock-task-dot" style="background:#28c840"></div>
+                <span class="mock-task-text">Informe mensual enviado a 3 destinatarios</span>
+                <span class="mock-task-badge" style="background:rgba(40,200,64,0.15);color:#28c840">Completado</span>
+              </div>
+              <div class="mock-task">
+                <div class="mock-task-dot" style="background:#5EC9FF"></div>
+                <span class="mock-task-text">Seguimiento automático — 5 clientes</span>
+                <span class="mock-task-badge" style="background:rgba(94,201,255,0.15);color:#5EC9FF">En proceso</span>
+              </div>
+              <div class="mock-task">
+                <div class="mock-task-dot" style="background:rgba(207,233,247,0.3)"></div>
+                <span class="mock-task-text">Actualización de hoja de cálculo</span>
+                <span class="mock-task-badge" style="background:rgba(207,233,247,0.08);color:rgba(207,233,247,0.4)">Pendiente</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -928,6 +1088,24 @@
       if (elapsed < DURATION) requestAnimationFrame(draw);
     }
     requestAnimationFrame(draw);
+  })();
+
+  /* ── CONTAINER SCROLL ANIMATION ── */
+  (function initScrollCard() {
+    const card = document.getElementById('scroll-card');
+    if (!card || prefersReduced) return;
+    function update() {
+      const scene = card.parentElement;
+      const rect  = scene.getBoundingClientRect();
+      const vh    = window.innerHeight;
+      // 0 = top of scene at bottom of viewport, 1 = fully in view
+      const progress = Math.max(0, Math.min(1, 1 - rect.top / vh));
+      const rotateX  = 18 * (1 - progress);
+      const scale    = 1.04 - 0.04 * progress;
+      card.style.transform = `rotateX(${rotateX}deg) scale(${scale})`;
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
   })();
 
   /* ── WORD CYCLING ── */
