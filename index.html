@@ -641,6 +641,7 @@
       display: flex; align-items: center; justify-content: center;
       padding: 1rem;
       background: var(--night);
+      position: relative;
     }
     .cs-inner {
       width: 100%; max-width: 1100px; margin: 0 auto;
@@ -885,84 +886,6 @@
 
 </section>
 
-<!-- ── CONTAINER SCROLL SHOWCASE ──────────────────── -->
-<section class="cs-section" aria-label="Vista de la plataforma Structura">
-  <div class="cs-inner">
-    <!-- title: translates up as card flattens -->
-    <div class="cs-title" id="cs-title" data-cs-title>
-      <span class="label">La plataforma</span>
-      <h2>Tus automatizaciones,<br><em>siempre bajo control</em></h2>
-      <p>Un panel centralizado donde ves cada flujo activo, cada tarea ejecutada y cada hora recuperada.</p>
-    </div>
-    <!-- card: starts tilted 20° and flattens to flat on scroll -->
-    <div class="cs-card" id="cs-card" data-cs-card>
-      <div class="cs-topbar">
-        <div class="cs-dot" style="background:#ff5f57"></div>
-        <div class="cs-dot" style="background:#febc2e"></div>
-        <div class="cs-dot" style="background:#28c840"></div>
-        <span class="cs-bar-title">Structura · Panel de automatizaciones</span>
-      </div>
-      <div class="cs-body">
-        <div class="cs-sidebar">
-          <div class="cs-nav active"><div class="cs-nav-icon"></div>Flujos activos</div>
-          <div class="cs-nav"><div class="cs-nav-icon"></div>Correos</div>
-          <div class="cs-nav"><div class="cs-nav-icon"></div>Reportes</div>
-          <div class="cs-nav"><div class="cs-nav-icon"></div>Seguimientos</div>
-          <div class="cs-nav"><div class="cs-nav-icon"></div>Configuración</div>
-        </div>
-        <div class="cs-content">
-          <div class="cs-stats">
-            <div class="cs-stat">
-              <div class="cs-stat-val">12.4h</div>
-              <div class="cs-stat-lbl">Ahorradas esta semana</div>
-            </div>
-            <div class="cs-stat">
-              <div class="cs-stat-val">247</div>
-              <div class="cs-stat-lbl">Tareas automatizadas</div>
-            </div>
-            <div class="cs-stat">
-              <div class="cs-stat-val">98%</div>
-              <div class="cs-stat-lbl">Tasa de éxito</div>
-            </div>
-          </div>
-          <div>
-            <div class="cs-lbl">Flujo activo — Informe semanal</div>
-            <div class="cs-flow">
-              <div class="cs-node">Datos CRM</div>
-              <div class="cs-arrow">→</div>
-              <div class="cs-node accent">IA analiza</div>
-              <div class="cs-arrow">→</div>
-              <div class="cs-node">Genera PDF</div>
-              <div class="cs-arrow">→</div>
-              <div class="cs-node">Envía correo</div>
-            </div>
-          </div>
-          <div>
-            <div class="cs-lbl">Últimas ejecuciones</div>
-            <div class="cs-tasks">
-              <div class="cs-task">
-                <div class="cs-task-dot" style="background:#28c840"></div>
-                <span class="cs-task-text">Informe mensual enviado a 3 destinatarios</span>
-                <span class="cs-badge" style="background:rgba(40,200,64,0.15);color:#28c840">Completado</span>
-              </div>
-              <div class="cs-task">
-                <div class="cs-task-dot" style="background:#5EC9FF"></div>
-                <span class="cs-task-text">Seguimiento automático — 5 clientes</span>
-                <span class="cs-badge" style="background:rgba(94,201,255,0.15);color:#5EC9FF">En proceso</span>
-              </div>
-              <div class="cs-task">
-                <div class="cs-task-dot" style="background:rgba(207,233,247,0.25)"></div>
-                <span class="cs-task-text">Actualización de hoja de cálculo</span>
-                <span class="cs-badge" style="background:rgba(207,233,247,0.08);color:rgba(207,233,247,0.35)">Pendiente</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ── BENEFITS ─────────────────────────────────────── -->
 <section class="cs-section" aria-labelledby="benefits-heading">
   <div class="cs-inner">
@@ -1069,6 +992,82 @@
             <p>Instalamos, configuramos y capacitamos a tu equipo. En semanas, las herramientas ya trabajan para ti.</p>
           </div>
 
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DASHBOARD ──────────────────────────────────────── -->
+<section class="cs-section" aria-label="Vista de la plataforma Structura">
+  <div class="cs-inner">
+    <div class="cs-title" id="cs-title" data-cs-title>
+      <span class="label">La plataforma</span>
+      <h2>Tus automatizaciones,<br><em>siempre bajo control</em></h2>
+      <p>Un panel centralizado donde ves cada flujo activo, cada tarea ejecutada y cada hora recuperada.</p>
+    </div>
+    <div class="cs-card" id="cs-card" data-cs-card>
+      <div class="cs-topbar">
+        <div class="cs-dot" style="background:#ff5f57"></div>
+        <div class="cs-dot" style="background:#febc2e"></div>
+        <div class="cs-dot" style="background:#28c840"></div>
+        <span class="cs-bar-title">Structura · Panel de automatizaciones</span>
+      </div>
+      <div class="cs-body">
+        <div class="cs-sidebar">
+          <div class="cs-nav active"><div class="cs-nav-icon"></div>Flujos activos</div>
+          <div class="cs-nav"><div class="cs-nav-icon"></div>Correos</div>
+          <div class="cs-nav"><div class="cs-nav-icon"></div>Reportes</div>
+          <div class="cs-nav"><div class="cs-nav-icon"></div>Seguimientos</div>
+          <div class="cs-nav"><div class="cs-nav-icon"></div>Configuración</div>
+        </div>
+        <div class="cs-content">
+          <div class="cs-stats">
+            <div class="cs-stat">
+              <div class="cs-stat-val">12.4h</div>
+              <div class="cs-stat-lbl">Ahorradas esta semana</div>
+            </div>
+            <div class="cs-stat">
+              <div class="cs-stat-val">247</div>
+              <div class="cs-stat-lbl">Tareas automatizadas</div>
+            </div>
+            <div class="cs-stat">
+              <div class="cs-stat-val">98%</div>
+              <div class="cs-stat-lbl">Tasa de éxito</div>
+            </div>
+          </div>
+          <div>
+            <div class="cs-lbl">Flujo activo — Informe semanal</div>
+            <div class="cs-flow">
+              <div class="cs-node">Datos CRM</div>
+              <div class="cs-arrow">→</div>
+              <div class="cs-node accent">IA analiza</div>
+              <div class="cs-arrow">→</div>
+              <div class="cs-node">Genera PDF</div>
+              <div class="cs-arrow">→</div>
+              <div class="cs-node">Envía correo</div>
+            </div>
+          </div>
+          <div>
+            <div class="cs-lbl">Últimas ejecuciones</div>
+            <div class="cs-tasks">
+              <div class="cs-task">
+                <div class="cs-task-dot" style="background:#28c840"></div>
+                <span class="cs-task-text">Informe mensual enviado a 3 destinatarios</span>
+                <span class="cs-badge" style="background:rgba(40,200,64,0.15);color:#28c840">Completado</span>
+              </div>
+              <div class="cs-task">
+                <div class="cs-task-dot" style="background:#5EC9FF"></div>
+                <span class="cs-task-text">Seguimiento automático — 5 clientes</span>
+                <span class="cs-badge" style="background:rgba(94,201,255,0.15);color:#5EC9FF">En proceso</span>
+              </div>
+              <div class="cs-task">
+                <div class="cs-task-dot" style="background:rgba(207,233,247,0.25)"></div>
+                <span class="cs-task-text">Actualización de hoja de cálculo</span>
+                <span class="cs-badge" style="background:rgba(207,233,247,0.08);color:rgba(207,233,247,0.35)">Pendiente</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1212,6 +1211,12 @@
   (function initContainerScroll() {
     if (prefersReduced) return;
     var sections = document.querySelectorAll('.cs-section');
+    /* Each section gets a higher z-index than the previous so that as you
+       scroll down, the incoming section always renders on top — preventing
+       3D-rotated cards from bleeding over the next section's title text. */
+    sections.forEach(function(section, i) {
+      section.style.zIndex = i + 1;
+    });
     sections.forEach(function(section) {
       var card  = section.querySelector('[data-cs-card]');
       var title = section.querySelector('[data-cs-title]');
