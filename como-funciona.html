@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cómo funciona — Structura</title>
+  <meta name="description" content="Descubre cómo Structura automatiza tu trabajo en tres pasos simples. Sin tecnicismos, hecho para ti." />
+
+  <style>
+    .skip-link { position:absolute; left:-9999px; top:4px; z-index:9999; padding:8px 16px; background:#1F6BFF; color:#fff; font-size:13px; border-radius:4px; text-decoration:none; }
+    .skip-link:focus { left:4px; }
+  </style>
+
+  <!-- Calendly -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"/>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --white:    #F5FAFF;
+      --ice:      #CFE9F7;
+      --neon:     #5EC9FF;
+      --electric: #1F6BFF;
+      --deep:     #0A2C8C;
+      --night:    #050F2A;
+      --disp:     'Calistoga', Georgia, serif;
+      --body:     'Manrope', system-ui, sans-serif;
+      --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family: var(--body);
+      font-size: 16px; line-height: 1.7;
+      color: var(--white);
+      background: var(--night);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(5,15,42,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(94,201,255,0.08);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 40px;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-brand svg { width: 32px; height: 32px; flex-shrink: 0; }
+    .nav-wordmark {
+      font-family: var(--disp); font-size: 18px;
+      color: rgba(255,255,255,0.9); letter-spacing: -0.01em;
+    }
+    .nav-cta {
+      padding: 8px 20px;
+      background: var(--electric); color: #fff;
+      font-family: var(--body); font-size: 13px; font-weight: 600;
+      text-decoration: none; border-radius: 8px; border: none; cursor: pointer;
+      transition: background 180ms ease, transform 140ms ease;
+    }
+    .nav-cta:hover { background: #1557e0; transform: translateY(-1px); }
+    .nav-cta:active { transform: scale(0.97); }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-block; position: relative; overflow: hidden;
+      font-family: var(--body); font-size: 14px; font-weight: 600;
+      text-decoration: none; border-radius: 8px; padding: 13px 28px;
+      border: 1.5px solid transparent;
+      transition: all 180ms ease; cursor: pointer;
+    }
+    .btn-electric {
+      background: var(--electric); color: #fff; border-color: var(--electric);
+      box-shadow: 0 2px 12px rgba(31,107,255,0.3);
+    }
+    .btn-electric:hover { background: #1557e0; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(31,107,255,0.42); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.06); color: rgba(207,233,247,.9);
+      border-color: rgba(207,233,247,.2);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: rgba(207,233,247,.4); transform: translateY(-2px); }
+
+    /* ── LABEL ── */
+    .label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--neon); margin-bottom: 16px;
+    }
+    .label::before {
+      content: ''; display: block; width: 20px; height: 1.5px;
+      background: var(--neon); border-radius: 1px;
+    }
+
+    /* ── PAGE INTRO ── */
+    .page-intro {
+      padding: 96px 40px 80px;
+      text-align: center;
+      border-bottom: 1px solid rgba(94,201,255,0.07);
+    }
+    .page-intro h1 {
+      font-family: var(--disp);
+      font-size: clamp(36px, 5vw, 68px);
+      font-weight: 400; line-height: 1.08; letter-spacing: -0.01em;
+      color: var(--white); margin-bottom: 20px; text-wrap: balance;
+    }
+    .page-intro h1 em {
+      font-style: normal;
+      background: linear-gradient(130deg, var(--neon) 0%, var(--electric) 55%, #96BAFF 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .page-intro p {
+      font-size: clamp(15px, 1.6vw, 18px); color: rgba(207,233,247,0.6);
+      max-width: 480px; margin: 0 auto; line-height: 1.85;
+    }
+
+    /* ── SECTIONS ── */
+    .cf-section {
+      max-width: 1100px; margin: 0 auto;
+      padding: 80px 40px;
+    }
+    .cf-section + .cf-section {
+      border-top: 1px solid rgba(94,201,255,0.07);
+    }
+    .section-head { margin-bottom: 56px; }
+    .section-head h2 {
+      font-family: var(--disp);
+      font-size: clamp(26px, 3.2vw, 44px);
+      font-weight: 400; line-height: 1.1; letter-spacing: -0.01em;
+      color: var(--white); margin-bottom: 12px; text-wrap: balance;
+    }
+    .section-head h2 em {
+      font-style: normal;
+      background: linear-gradient(130deg, var(--neon) 0%, var(--electric) 55%, #96BAFF 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .section-head p {
+      font-size: 15px; color: rgba(207,233,247,0.55);
+      max-width: 440px; line-height: 1.85;
+    }
+
+    /* ── STEPS ── */
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+    }
+    .step-item { display: flex; flex-direction: column; gap: 16px; }
+    .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--electric) 0%, var(--deep) 100%);
+      color: #fff; font-size: 14px; font-weight: 700;
+      box-shadow: 0 4px 16px rgba(31,107,255,0.35), 0 0 0 4px rgba(31,107,255,0.1);
+      flex-shrink: 0;
+    }
+    .step-item h3 {
+      font-family: var(--disp); font-size: 20px; font-weight: 400;
+      color: var(--white); letter-spacing: -0.005em;
+    }
+    .step-item p {
+      font-size: 14px; color: rgba(207,233,247,0.55); line-height: 1.85;
+    }
+
+    /* ── BENEFITS ── */
+    .benefits-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+    }
+    .benefit-item { display: flex; flex-direction: column; gap: 14px; }
+    .bicon-wrap {
+      width: 44px; height: 44px;
+      background: rgba(31,107,255,0.14);
+      border: 1px solid rgba(94,201,255,0.2);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 220ms ease, transform 220ms ease;
+    }
+    .benefit-item:hover .bicon-wrap {
+      background: rgba(31,107,255,0.26);
+      transform: scale(1.08) rotate(-4deg);
+    }
+    .bicon { width: 20px; height: 20px; color: var(--neon); }
+    .benefit-item h3 {
+      font-family: var(--disp); font-size: 19px; font-weight: 400;
+      color: var(--white); letter-spacing: -0.005em;
+    }
+    .benefit-item p {
+      font-size: 14px; color: rgba(207,233,247,0.55); line-height: 1.85;
+    }
+    .tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 12px; border-radius: 100px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
+      background: rgba(31,107,255,0.14); border: 1px solid rgba(94,201,255,0.18);
+      color: var(--neon); width: fit-content;
+    }
+    .tag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--neon); }
+
+    /* ── CTA ── */
+    .cf-cta {
+      text-align: center;
+      padding: 96px 40px;
+      border-top: 1px solid rgba(94,201,255,0.07);
+      background: linear-gradient(180deg, transparent 0%, rgba(31,107,255,0.04) 100%);
+    }
+    .cf-cta h2 {
+      font-family: var(--disp);
+      font-size: clamp(28px, 3.8vw, 52px);
+      font-weight: 400; line-height: 1.08; letter-spacing: -0.01em;
+      color: var(--white); margin-bottom: 16px; text-wrap: balance;
+    }
+    .cf-cta p {
+      font-size: clamp(14px, 1.5vw, 16px); color: rgba(207,233,247,0.55);
+      max-width: 400px; margin: 0 auto 40px; line-height: 1.85;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(94,201,255,0.07);
+      padding: 32px 40px;
+    }
+    .foot-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .foot-brand {
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none; color: rgba(207,233,247,0.7); font-size: 14px;
+    }
+    .foot-brand svg { width: 22px; height: 22px; }
+    .foot-copy { font-size: 12px; color: rgba(207,233,247,0.32); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 600ms ease, transform 600ms ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal[data-delay="1"] { transition-delay: 80ms; }
+    .reveal[data-delay="2"] { transition-delay: 180ms; }
+    .reveal[data-delay="3"] { transition-delay: 280ms; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .steps-grid, .benefits-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+    @media (max-width: 640px) {
+      .nav-inner, .cf-section, .page-intro, .cf-cta, footer { padding-left: 20px; padding-right: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<!-- ── NAV ── -->
+<nav aria-label="Navegación principal">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand" aria-label="Structura — inicio">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none" aria-hidden="true">
+        <path fill-rule="evenodd"
+          d="m248.7 207.9-100-175.5c-5.28-9.25-13.09-12.81-20.74-12.81h-.05c-10.17 0-17.98 6.14-21.23 13.57l-99.27 174.6c-7.08 12.42 2.67 27.62 18.07 27.27 3.57-.09 6.59-1.09 9.82-2.65l80.98-36.3c8.92-4.04 18.74-2.33 24.62.73l82.9 36.57c13.37 6.37 31.38-5.45 26.18-22.49-.3-1.03-.72-2.03-1.27-2.98z M181.8 146.6c-2.79 0-4.8.4-7.08 1.24l-32.09-48.75c3.54-4 4.7-8.18 4.4-12.45-.77-10.04-8.68-18.58-18.92-18.58h-.14c-11.11 0-18.34 9.29-18.34 19.13 0 5 1.52 8.2 3.9 11.1l-40.81 61.33c-1.12-.15-2.28-.25-3.45-.25-10.77 0-18.48 8.64-18.48 18.77 0 10.35 8.22 18.33 18.19 18.33h.29c9.78 0 17.63-7.18 19.21-15.87l74.14-12.94c1.17 9.54 9.48 16.11 18.4 16.11h.24c10.87 0 18.79-9.08 17.37-19.96-1.12-8.54-7.87-17.21-16.83-17.21zm-53.74-68.7c6.27 0 8.09 5.62 8.09 9.14 0 5.51-4.79 7.92-7.89 7.92-5.23 0-8.52-4.15-8.52-7.82 0-4.37 2.91-9.24 8.32-9.24zm-59.03 108.6c-6.03-.35-8.31-4.92-8.31-8.04 0-5.16 4.23-8.32 8.21-8.32h.24c5.68 0 8.2 4.87 8.2 8.22 0 5.53-4.14 8.34-8.34 8.14zm95.2-29.75-77.58 13.39c-1.02-2.31-2.13-3.87-3.95-5.27l38.47-60.78c2.48.8 4.15 1 6.62 1 2.33 0 3.75-.4 5.88-1l33.06 49.25c-1.07 1.3-1.65 1.9-2.5 3.41zm16.98 16.8c-6.02 0-9.16-4.67-9.16-7.58 0-5.12 3.8-9.37 9.21-9.37 6.07 0 8.14 5.36 8.14 8.87 0 4.92-4.14 8.08-8.19 8.08z"
+          fill="rgba(255,255,255,0.88)"/>
+      </svg>
+      <span class="nav-wordmark">Structura</span>
+    </a>
+    <a href="" class="nav-cta" onclick="Calendly.initPopupWidget({url:'https://calendly.com/ismaeldavidlora/30-minutos-valoracion-gratuita?hide_gdpr_banner=1&lang=es'});return false;">Agendar valoración</a>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- ── PAGE INTRO ── -->
+  <div class="page-intro">
+    <span class="label">El proceso</span>
+    <h1>Tres pasos.<br><em>Sin complicaciones.</em></h1>
+    <p>Desde la primera conversación hasta que las herramientas trabajan para ti.</p>
+  </div>
+
+  <!-- ── STEPS ── -->
+  <div class="cf-section" id="proceso">
+    <div class="steps-grid">
+
+      <div class="step-item reveal" data-delay="1">
+        <div class="step-num" aria-label="Paso 1">1</div>
+        <h3>Diagnóstico gratuito</h3>
+        <p>Conversamos sobre cómo trabajas y qué tareas te quitan más tiempo. Sin tecnicismos. Sin compromisos.</p>
+      </div>
+
+      <div class="step-item reveal" data-delay="2">
+        <div class="step-num" aria-label="Paso 2">2</div>
+        <h3>Construimos tus herramientas</h3>
+        <p>Diseñamos automatizaciones con IA hechas para tu flujo de trabajo. Tú apruebas cada paso del proceso.</p>
+      </div>
+
+      <div class="step-item reveal" data-delay="3">
+        <div class="step-num" aria-label="Paso 3">3</div>
+        <h3>Lo ponemos en marcha</h3>
+        <p>Instalamos, configuramos y capacitamos a tu equipo. En semanas, las herramientas ya trabajan para ti.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── BENEFITS ── -->
+  <div class="cf-section">
+    <div class="section-head reveal">
+      <span class="label">Para ti y tu negocio</span>
+      <h2>Automatización para empresas<br><em>y profesionales independientes</em></h2>
+      <p>No necesitas saber de tecnología. Nosotros entendemos tu trabajo, construimos las herramientas y te enseñamos a usarlas.</p>
+    </div>
+
+    <div class="benefits-grid">
+
+      <div class="benefit-item reveal" data-delay="1">
+        <div class="bicon-wrap">
+          <svg class="bicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <h3>Recupera tu tiempo</h3>
+        <p>Elimina las tareas que consumen tu día — informes, correos, seguimientos, registros. En tu empresa o en tu trabajo independiente.</p>
+      </div>
+
+      <div class="benefit-item reveal" data-delay="2">
+        <div class="bicon-wrap">
+          <svg class="bicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+        </div>
+        <h3>Hecho para ti</h3>
+        <p>Cada herramienta se diseña para tu flujo de trabajo específico — tu sector, tu forma de trabajar. No plantillas genéricas.</p>
+        <div class="tag"><div class="tag-dot"></div>100% a medida</div>
+      </div>
+
+      <div class="benefit-item reveal" data-delay="3">
+        <div class="bicon-wrap">
+          <svg class="bicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3>Acompañamiento total</h3>
+        <p>Instalamos, capacitamos a tu equipo y seguimos contigo después del lanzamiento. Nunca quedas solo.</p>
+        <div class="tag"><div class="tag-dot"></div>Soporte continuo</div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<!-- ── CTA ── -->
+<div class="cf-cta">
+  <span class="label" style="justify-content:center">Empecemos</span>
+  <h2>Descubre qué puede hacer<br>la IA por ti</h2>
+  <p>Una llamada de 30 minutos, sin costo. Te mostramos con ejemplos reales qué tareas podrías automatizar.</p>
+  <a href="" class="btn btn-electric" onclick="Calendly.initPopupWidget({url:'https://calendly.com/ismaeldavidlora/30-minutos-valoracion-gratuita?hide_gdpr_banner=1&lang=es'});return false;">Agendar valoración gratuita</a>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="foot-inner">
+    <a href="index.html" class="foot-brand" aria-label="Structura — inicio">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none" aria-hidden="true">
+        <path fill-rule="evenodd"
+          d="m248.7 207.9-100-175.5c-5.28-9.25-13.09-12.81-20.74-12.81h-.05c-10.17 0-17.98 6.14-21.23 13.57l-99.27 174.6c-7.08 12.42 2.67 27.62 18.07 27.27 3.57-.09 6.59-1.09 9.82-2.65l80.98-36.3c8.92-4.04 18.74-2.33 24.62.73l82.9 36.57c13.37 6.37 31.38-5.45 26.18-22.49-.3-1.03-.72-2.03-1.27-2.98z M181.8 146.6c-2.79 0-4.8.4-7.08 1.24l-32.09-48.75c3.54-4 4.7-8.18 4.4-12.45-.77-10.04-8.68-18.58-18.92-18.58h-.14c-11.11 0-18.34 9.29-18.34 19.13 0 5 1.52 8.2 3.9 11.1l-40.81 61.33c-1.12-.15-2.28-.25-3.45-.25-10.77 0-18.48 8.64-18.48 18.77 0 10.35 8.22 18.33 18.19 18.33h.29c9.78 0 17.63-7.18 19.21-15.87l74.14-12.94c1.17 9.54 9.48 16.11 18.4 16.11h.24c10.87 0 18.79-9.08 17.37-19.96-1.12-8.54-7.87-17.21-16.83-17.21zm-53.74-68.7c6.27 0 8.09 5.62 8.09 9.14 0 5.51-4.79 7.92-7.89 7.92-5.23 0-8.52-4.15-8.52-7.82 0-4.37 2.91-9.24 8.32-9.24zm-59.03 108.6c-6.03-.35-8.31-4.92-8.31-8.04 0-5.16 4.23-8.32 8.21-8.32h.24c5.68 0 8.2 4.87 8.2 8.22 0 5.53-4.14 8.34-8.34 8.14zm95.2-29.75-77.58 13.39c-1.02-2.31-2.13-3.87-3.95-5.27l38.47-60.78c2.48.8 4.15 1 6.62 1 2.33 0 3.75-.4 5.88-1l33.06 49.25c-1.07 1.3-1.65 1.9-2.5 3.41zm16.98 16.8c-6.02 0-9.16-4.67-9.16-7.58 0-5.12 3.8-9.37 9.21-9.37 6.07 0 8.14 5.36 8.14 8.87 0 4.92-4.14 8.08-8.19 8.08z"
+          fill="rgba(255,255,255,0.75)"/>
+      </svg>
+      Structura
+    </a>
+    <span class="foot-copy">© 2025 Structura · Colombia</span>
+  </div>
+</footer>
+
+<!-- Calendly -->
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+<script>
+(function () {
+  'use strict';
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    return;
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
+</script>
+
+</body>
+</html>
