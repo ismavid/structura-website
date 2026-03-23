@@ -10,7 +10,7 @@
 |---|---|
 | **Company name** | Structura |
 | **Type** | Startup / consulting service |
-| **Founded** | 2024 |
+| **Founded** | 2026 |
 | **Country** | Colombia |
 | **Language** | Spanish (primary), English (secondary) |
 | **Slogan** | *"Tu tiempo donde más importa"* ("Your time where it matters most") |
