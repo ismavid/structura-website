@@ -551,8 +551,8 @@
       border-bottom-color: rgba(10,44,140,0.08) !important;
       box-shadow: 0 1px 24px rgba(10,44,140,0.1) !important;
     }
-    .nav-wordmark { color: #F5FAFF; transition: color 350ms ease; }
-    nav.nav-solid .nav-wordmark { color: var(--night); }
+    .nav-wordmark { color: #F5FAFF !important; transition: color 350ms ease; }
+    nav.nav-solid .nav-wordmark { color: var(--night) !important; }
 
     /* ─────────────────────────────────────────────
        HERO — dark with WebGL canvas
@@ -566,7 +566,16 @@
     }
 
     /* hero text / badge adapted for dark bg */
-    .hero h1      { color: #F5FAFF !important; }
+    .hero h1 {
+      color: #F5FAFF !important;
+      font-family: var(--body) !important;
+      font-weight: 300 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 0.02em !important;
+    }
+    .h1-static { display: block; }
     .hero-sub     { color: rgba(207,233,247,0.65) !important; }
     .hero-badge   { background:rgba(94,201,255,0.07) !important; border-color:rgba(94,201,255,0.22) !important; color:var(--neon) !important; }
     .badge-dot    { background:var(--neon) !important; }
@@ -581,28 +590,31 @@
     /* ─────────────────────────────────────────────
        WORD CYCLING
     ───────────────────────────────────────────── */
-    .word-cycler-wrap {
-      display:inline-block;
-      overflow:hidden;
-      vertical-align:bottom;
-      max-height:1.08em;
-      line-height:1.08em;
+    .h1-word-wrap {
+      display: block;
+      overflow: hidden;
+      height: 1.2em;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     #cycling-word {
-      display:inline-block;
-      font-style:normal;
-      background:linear-gradient(130deg, var(--neon) 0%, var(--electric) 55%, #96BAFF 100%);
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      display: inline-block;
+      font-style: normal;
+      font-weight: 700;
+      background: linear-gradient(130deg, var(--neon) 0%, var(--electric) 55%, #96BAFF 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     @keyframes wordEnter {
-      from { opacity:0; transform:translateY(72%); }
+      from { opacity:0; transform:translateY(110%); }
       to   { opacity:1; transform:translateY(0); }
     }
     @keyframes wordExit {
       from { opacity:1; transform:translateY(0); }
-      to   { opacity:0; transform:translateY(-72%); }
+      to   { opacity:0; transform:translateY(-110%); }
     }
-    .word-entering { animation:wordEnter 0.45s cubic-bezier(0.22,0.61,0.36,1) forwards; }
+    .word-entering { animation:wordEnter 0.48s cubic-bezier(0.22,0.61,0.36,1) forwards; }
     .word-exiting  { animation:wordExit  0.28s ease-in forwards; }
 
     /* ─────────────────────────────────────────────
@@ -674,7 +686,11 @@
         <span class="badge-dot"></span>
         Automatización con IA
       </div>
-      <h1>Tu <span class="word-cycler-wrap"><em id="cycling-word">tiempo</em></span><br>donde realmente importa</h1>
+      <h1>
+        <span class="h1-static">Tu</span>
+        <span class="h1-word-wrap"><em id="cycling-word">tiempo</em></span>
+        <span class="h1-static">donde realmente importa</span>
+      </h1>
       <p class="hero-sub">Para empresas y profesionales independientes. Automatizamos tus tareas repetitivas con herramientas de IA hechas exactamente para ti.</p>
       <div class="hero-actions">
         <a href="" class="btn btn-electric" onclick="Calendly.initPopupWidget({url:'https://calendly.com/ismaeldavidlora/30-minutos-valoracion-gratuita?hide_gdpr_banner=1&lang=es'});return false;">Agenda tu valoración gratuita</a>
