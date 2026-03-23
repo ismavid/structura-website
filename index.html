@@ -666,9 +666,6 @@
 <main id="main">
 <section class="hero">
   <canvas id="hero-canvas" aria-hidden="true"></canvas>
-  <div class="hero-dots"  aria-hidden="true"></div>
-  <div class="hero-orb-1" aria-hidden="true"></div>
-  <div class="hero-orb-2" aria-hidden="true"></div>
 
   <div class="hero-inner">
 
@@ -885,26 +882,18 @@
     window.addEventListener('resize', resize, { passive:true });
     resize();
 
-    let t = 0, animId = null;
+    let t = 0;
+    const startTime = performance.now();
+    const DURATION = 3200; // ms — plays once then freezes
 
     function draw() {
+      const elapsed = performance.now() - startTime;
       t += 0.05;
       gl.uniform1f(uTime, t);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-      animId = requestAnimationFrame(draw);
+      if (elapsed < DURATION) requestAnimationFrame(draw);
     }
-
-    // Only run while hero is visible
-    new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        if (!animId) animId = requestAnimationFrame(draw);
-      } else {
-        cancelAnimationFrame(animId);
-        animId = null;
-      }
-    }, { threshold: 0.01 }).observe(canvas);
-
-    animId = requestAnimationFrame(draw);
+    requestAnimationFrame(draw);
   })();
 
   /* ── 1. NAV — transparent over hero, solid after ── */
